@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <div class="container-fluid py-5">
+        <form method="POST">
+                {% csrf_token %}
+                <table>
+                {{form.as_table}}
+                </table>
+        <br>
+        <input type="submit" value="제출하기" >
+        </form>
+        <a href="{% url 'home' %}">돌아가기</a>
+        </div>
+</form>  
+
+{% comment %} 
+{% for post in posts_list %}
+
+    <p>제목 : {{post.title}} </p>
+    <p>내용 : {{post.explain}}</p>
+    {% if post.image %}
+
+    <img src="{{post.image.url}}" height=200>
+
+    {%endif%}
+    {% if post.menupicture %}
+    <img src="{{post.menupicture.url}}" height=200>
+    {%endif%}
+    <p>메뉴 : {{post.menutext}}</p>
+    <p>지역 : {{post.place}}</p>
+    <p>종류 : {{post.placetype}}</p>
+{% endfor %} {% endcomment %}
+{% endblock %}

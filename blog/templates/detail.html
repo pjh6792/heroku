@@ -1,0 +1,117 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<head>
+<link rel='stylesheet' type='text/css' href='{% static "blog/css/detail.css"%}'>
+    <style>
+        body {
+            background-color: #EFE3BB;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+ <!-- Home Search -->
+   <div class="home_search">
+       <div class="container">
+           <div class="row">
+               <div class="col">
+                   <div class="home_search_container">
+                       <div class="home_search_content">
+                           <form action="#" class="search_form d-flex flex-row align-items-center justify-content-center">
+                               <div class="search_form_content d-flex flex-row align-items-center justify-content-center flex-wrap">
+                                   <div>
+                                       <select class="search_form_select">
+                                           <option disabled selected>위치</option>
+                                           <option> 서울 </option>
+                                           <option> 인천 </option>
+                                           <option> 경기 </option>
+                                           <option> 강원 </option>
+                                       </select>
+                                   </div>
+                                   <br>
+                                   <div>
+                                       <select class="search_form_select">
+                                           <option disabled selected>갈 곳</option>
+                                           <option> 식당 </option>
+                                           <option> 카페 </option>
+                                           <option> 산책로 </option>
+                                           <option> 공원 </option>
+                                       </select>
+                                   </div>
+                                   
+                               </div>
+                               
+                                       
+                               <button type="button" button class="btn ml-auto btn-info mt-1">search</button>
+                               <a class="btn btn-info ml-2 mt-1" href = "{% url 'new' %}"> 글쓰기</a>
+                           </form>
+                           
+                               
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+      <!-- Recent -->
+
+   <div class="recent">
+      <div class="container">
+         <div class="row">
+            <div class="col">
+            </div>
+         </div>
+         <div class="row recent_row">
+            <div class="col">
+               <div class="recent_slider_container">
+                  <div class="owl-carousel owl-theme recent_slider">
+                            
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                {% if post_page.has_previous %}
+                                <a href="?keyword1={{keyword1}}&keyword2={{keyword2}}&page=1" class="btn btn-secondary">First</a>
+                                <a href="?keyword1={{keyword1}}&keyword2={{keyword2}}&page={{post_page.previous_page_number}}" class="btn btn-secondary">Previous</a>
+                                {% endif %}
+                                {% if post_page.has_next %}
+                                <a href="?keyword1={{keyword1}}&keyword2={{keyword2}}&page={{post_page.next_page_number}}" class="btn btn-secondary">Next</a>
+                                <a href="?keyword1={{keyword1}}&keyword2={{keyword2}}&page={{post_page.paginator.num_pages}}" class="btn btn-secondary">Last</a>
+                                {% endif %}
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+{% for post in posts_list %}
+<div class='jane' style='text-align:center;'>
+    
+<hr>
+    <p>제목 : {{post.title}} </p>
+    <p>내용 : {{post.explain}}</p>
+    {% if post.image %}
+
+    <img src="{{post.image.url}}" height=200>
+
+    {%endif%}
+    {% if post.menupicture %}
+    <img src="{{post.menupicture.url}}" height=200>
+    {%endif%}
+    <br><br>
+    <p>메뉴 : {{post.menutext}}</p>
+    <p>지역 : {{post.place}}</p>
+    <p>종류 : {{post.placetype}}</p>
+
+    <a href = "{% url 'post' post.id%}">post게시글로 가기</a>
+
+</div>
+{% endfor %}
+
+</body>
+{% endblock %}

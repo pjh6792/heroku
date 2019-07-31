@@ -1,0 +1,28 @@
+@font-face { 
+    font-family: 'S-CoreDream-8Heavy'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8Heavy.woff') 
+    format('woff');
+     font-weight: normal; 
+     font-style: normal; 
+    }
+
+@font-face { 
+        font-family: 'Arita-dotum-Medium'; 
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') 
+        format('woff'); 
+        font-weight: normal; 
+        font-style: normal; 
+    }
+
+#title1 {
+        font-family: 'S-CoreDream-8Heavy'; 
+    }
+
+
+p {
+    font-size:20px;
+}
+
+container-fluid{
+    font-family: 'S-CoreDream-8Heavy';
+}

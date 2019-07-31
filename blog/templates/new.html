@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<link rel='stylesheet' type='text/css' href='{% static "blog/css/new.css"%}'>
+
+<center>
+<div class="new-form py-5">
+<h1 id="title1" style="margin:0;">새로운 글</h1>
+
+<!-- <form method="POST" class="post-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Save</button>
+</form> -->
+
+<form method="POST" class="post-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p class='title pt-5'>
+        <input type="text" name="title" maxlength="200" required="" id="id_title" class="form-control col-6" placeholder="제목">
+    </p>
+    <div class="row col-6 p-0 text-left">
+    <p class="col-6 pl-0"><label for="id_place" style="font-weight: 700;">장소</label> <select name="place" id="id_place" class="form-control">
+  <option value="서울" selected="">서울</option>
+  <option value="경기">경기</option>
+  <option value="강원">강원</option>
+
+</select></p>
+<p class="col-6 pr-0"><label for="id_placetype" style="font-weight: 700;">장소종류</label> <select name="placetype" id="id_placetype" class="form-control ">
+  <option value="카페" selected="">카페</option>
+  <option value="식당">식당</option>
+  <option value="산책">산책</option>
+
+</select></p>
+</div>
+<p><textarea class="form-control col-6" name="explain" cols="40" rows="10" required="" id="id_explain" placeholder="설명"></textarea></p>
+<div class="row col-6 p-0 text-left">
+<p class="col-6 pl-0"><label for="id_image" style="font-weight: 700;">사진</label> <input class="form-control" type="file" name="image" accept="image/*" id="id_image"></p>
+<p class="col-6 pr-0"><label for="id_menupicture" style="font-weight: 700;">메뉴판</label> <input class="form-control" type="file" name="menupicture" accept="image/*" id="id_menupicture"></p>
+</div>
+<p> <textarea placeholder="메뉴설명" class="form-control col-6" name="menutext" cols="40" rows="10" required="" id="id_menutext"></textarea></p>
+    <button type="submit" class="btn btn-info btn-block col-6">등록</button>
+</form>
+</div>
+
+
+</center>
+{% endblock %}

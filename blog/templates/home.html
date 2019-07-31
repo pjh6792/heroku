@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    @font-face { font-family: 'BBTreeGR'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') format('woff'); font-weight: normal; font-style: normal; }
+    @font-face { font-family: 'Arita-dotum-Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+body {
+    margin: 100px 500px;
+    font-family : 'Arita-dotum-Medium';
+    background-repeat:no-repeat;
+    background-position : 65% 70%;
+}
+
+</style>
+
+</head>
+
+<body style="display: flex;">
+<div class="main">
+<h3> blog</h3>
+<br><br>
+  <div class="navbar">
+    {% if user.is_authenticated %}
+      환영합니다. {{user.username}} 님!!
+    <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
+      <form id="logout" method="POST" action="{% url 'logout' %}">
+      {% csrf_token %} <input type="hidden">
+      </form>
+    {% else %}
+    <a class="nav-item nav-link" href="{% url 'signup' %}"> 회원가입</a>
+    <br>
+    <a class="nav-item nav-link" href="{% url 'login' %}">로그인</a>
+    {% endif %}
+
+  </div>
+
+<a href = "{% url 'new' %}"> 글쓰기</a>
+</div>
+</body>
